@@ -2,6 +2,7 @@ package org.pentaho.di.trans.steps.comparefields;
 
 import org.pentaho.di.core.Const;
 import org.pentaho.di.core.exception.KettleException;
+import org.pentaho.di.core.injection.Injection;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.xml.XMLHandler;
 import org.pentaho.di.i18n.BaseMessages;
@@ -17,8 +18,15 @@ public class CompareField {
   public static final String CODE_COMPARE_FIELD = "compare_field";
   public static final String CODE_IGNORE_CASE = "ignore_case";
 
+  @Injection( name = "REFERENCE_FIELD", group = "COMPARE_FIELDS" )
   private String referenceFieldname;
+
+  @Injection( name = "COMPARE_FIELD", group = "COMPARE_FIELDS" )
   private String compareFieldname;
+
+  public CompareField() {
+    super();
+  }
 
   public CompareField( String referenceFieldname, String compareFieldname, boolean ignoringCase ) {
     super();
